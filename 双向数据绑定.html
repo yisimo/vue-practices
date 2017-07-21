@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>双向数据绑定</title>
+    <script src="js/vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" placeholder="请输入" v-model="msg">
+        <p>{{ msg }}</p>
+    </div>
+
+    <script>
+        var app = new Vue({
+           el:'#app',
+            data:{
+               msg:'You are handsome!'
+            }
+        });
+    </script>
+</body>
+</html>

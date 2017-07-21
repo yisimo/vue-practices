@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>导航效果</title>
+    <script src="js/vue.js"></script>
+    <style>
+        .nav{
+            width: 600px;
+            margin: 100px auto 20px;
+        }
+        .nav li{
+            float: left;
+            background-color: #5597b4;
+            padding: 30px 18px;
+            color: #fff;
+            font-size: 20px;
+            font-weight:bold;
+            text-transform: uppercase;
+            list-style-type: none;
+        }
+        .main{
+            width: 600px;
+            clear: both;
+            margin:20px auto;
+            text-align: center;
+        }
+        .home .home,.news .news,.products .products,.about .about,.contact .contact{
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <ul class="nav" :class="[current]">
+            <li class="home" @click="change('home')">home</li>
+            <li class="news" @click="change('news')">news</li>
+            <li class="products" @click="change('products')">products</li>
+            <li class="about" @click="change('about')">about</li>
+            <li class="contact" @click="change('contact')">contact</li>
+        </ul>
+        <div class="main">当前页面为：{{ current }}</div>
+    </div>
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data:{
+                current:'home'
+            },
+            methods:{
+                change:function (cur) {
+                    this.current = cur;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

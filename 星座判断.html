@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>星座判断</title>
+    <script src="js/vue.js"></script>
+    <style>
+        .search-box{
+            width: 500px;
+            height: 50px;
+            line-height: 50px;
+            border:1px solid red;
+            background-color: pink;
+            margin:100px auto 0;
+            text-align: center;
+        }
+        .result{
+            margin:20px auto;
+            width: 500px;
+        }
+        .result img{
+            width:auto;
+            height:auto;
+            max-width: 100%;
+            max-height:100%;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="app">
+        <section class="search-box">
+            请输入您的星座名：<input type="text" placeholder="星座名" v-model="constellation" @keyup.enter="query">
+            <input type="button" value="确定" @click="query">
+        </section>
+
+        <section class="result" v-html="consDetail"></section>
+    </div>
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data:{
+                constellation:'',
+                consDetail:'',
+            },
+            methods:{
+                query:function () {
+                    switch(this.constellation){
+                        case '白羊座':
+                            this.consDetail = "<img src='img/by.jpg'>";
+                            break;
+                        case '金牛座':
+                            this.consDetail = "<img src='img/jn.jpg'>";
+                            break;
+                        case '双子座':
+                            this.consDetail = "<img src='img/sz.jpg'>";
+                            break;
+                        case '巨蟹座':
+                            this.consDetail = "<img src='img/jx.jpg'>";
+                            break;
+                        case '狮子座':
+                            this.consDetail = "<img src='img/shiz.jpg'>";
+                            break;
+                        case '处女座':
+                            this.consDetail = "<img src='img/cn.jpg'>";
+                            break;
+                        case '天枰座':
+                            this.consDetail = "<img src='img/tp.jpg'>";
+                            break;
+                        case '天蝎座':
+                            this.consDetail = "<img src='img/tx.jpg'>";
+                            break;
+                        case '射手座':
+                            this.consDetail = "<img src='img/ss.jpg'>";
+                            break;
+                        case '摩羯座':
+                            this.consDetail = "<img src='img/mj.jpg'>";
+                            break;
+                        case '水瓶座':
+                            this.consDetail = "<img src='img/sp.jpg'>";
+                            break;
+                        case '双鱼座':
+                            this.consDetail = "<img src='img/sy.jpg'>";
+                            break;
+                        default:
+                            this.consDetail = "请输入正确的星座名"
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
