@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标移上提醒功能</title>
+    <script src="js/vue.js"></script>
+    <style>
+        fieldset{
+            width: 230px;
+            padding-left: 25px;
+            margin:100px auto;
+        }
+        fieldset label{
+            color: #bbb;
+            font-size: 12px;
+            vertical-align: 3px;
+        }
+        #app1{
+            position: relative;
+        }
+        fieldset span{
+            padding: 3px;
+            display: block;
+            border:1px solid #dfb86d;
+            color: #dc9632;
+            background-color: #fffde4;
+            font-size: 10px;
+            position: absolute;
+            top: 18px;
+            left: 4px;
+        }
+    </style>
+</head>
+<body>
+    <fieldset>
+        <form action="">
+            <p>邮箱：<input type="email"></p>
+            <p>密码：<input type="password"></p>
+            <p id="app1" v-on:mouseenter="visible" v-on:mouseleave="invisible">
+                <input type="checkbox" id="msg">
+                <label for="msg">十天内免登录</label>
+                <span v-show="seen">请勿在公共场所勾选此项</span>
+            </p>
+            <p><input type="button" value="登录"> <input type="button" value="注册"></p>
+        </form>
+    </fieldset>
+    <script>
+        var app1 = new Vue({
+            el:'#app1',
+            data:{
+                seen:false,
+            },
+            methods:{
+                visible:function () {
+                    this.seen = true;
+                },
+                invisible:function () {
+                    this.seen = false;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

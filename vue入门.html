@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<head>
+	<meta lang="en">
+	<title>Vue.js</title>
+	<script src="js/vue.js"></script>
+	<style>
+		img{
+			width: 5rem;
+			height:auto;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<template v-if="login">Vince,Welcome to here!</template>
+		<template v-else>
+			<a href="#">login</a>
+			<a href="#">register</a>
+		</template>
+		<h3 v-text="'现在是'+year+'年'+month+'月'"></h3>
+		<h4 v-html="msg"></h4>
+		<p>name:{{person.name}}</p>
+		<p>age:{{person.age}}</p>
+		<p>sex:{{person.sex}}</p>
+		<a v-bind:href="hrefvalue" v-show="seen">
+			<img v-bind:src="source" alt="logo">
+		</a>
+		<div>
+			<img v-bind:src="'img/'+num+'.png'" alt="">
+			<span>{{num==1?'vue':'react'}}</span>
+		</div>
+		<p v-on:click="singer">华语男歌手排行：</p>
+		<ul>
+			<li v-for="(singer,index) in singers">{{ singer.no }} {{ singer.name }} (索引值为：{{index}})</li>
+		</ul>
+	</div>
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+			    year:new Date().getFullYear(),
+				month:new Date().getMonth()+1,
+				msg:"Stay hungry Stay foolish",
+			    person:{
+			        name:"vince",
+					age:20,
+					sex:"man"
+				},
+                hrefvalue:'http://doc.vue-js.com',
+                source:'img/vue.png',
+				num:1,
+				seen:false,
+				login:true,
+                singers:[
+                    {no:1,name:'周杰伦'},
+                    {no:2,name:'王力宏'},
+                    {no:3,name:'林俊杰'},
+				]
+			},
+			methods:{
+                singer:function () {
+					alert('Hello Vince!');
+                }
+			}
+		})
+	</script>
+</body>
